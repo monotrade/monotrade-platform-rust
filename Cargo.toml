@@ -1,24 +1,24 @@
 [package]
-name = "actix"
-version = "0.10.0-alpha.3"
-authors = ["Nikolay Kim <fafhrd91@gmail.com>"]
-description = "Actor framework for Rust"
+name = "monotrade"
+version = "0.0.1"
+authors = ["Holbrook <wanghaikuo@tsinghua.org.cn>"]
+description = "Quant Strategy Platform"
 readme = "README.md"
-keywords = ["actor", "futures", "actix", "async", "tokio"]
-homepage = "https://actix.rs"
-repository = "https://github.com/actix/actix.git"
-documentation = "https://docs.rs/actix/"
-categories = ["network-programming", "asynchronous"]
-license = "MIT OR Apache-2.0"
+keywords = ["quant", "trader", "strategy", "algorithm"]
+homepage = "https://"
+repository = "https://github.com/monotrade/monotrade-platform-rust.git"
+documentation = "https://"
+categories = ["quant"]
+license = "MIT"
 exclude = [".gitignore", ".cargo/config", ".github/**", "codecov.yml"]
 edition = "2018"
 
 [lib]
-name = "actix"
+name = "monotrade"
 path = "src/lib.rs"
 
 [workspace]
-members = ["examples/chat"]
+members = ["examples/console_demo"]
 
 [features]
 default = ["resolver"]
