@@ -10,7 +10,7 @@ edition = "2018"
 
 
 [lib]
-name = "monotrade_platform"
+name = "monotrade"
 path = "src/lib.rs"
 
 [dependencies]

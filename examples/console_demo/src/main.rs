@@ -1,6 +1,12 @@
 use std::io;
 
+# use monotrade_platform::prelude::*;
+use monotrade::platform::*;
+
 fn main() {
+    let platform = Platform::new();
+    platform.initialize();
+
     println!("Guess the number!");
     println!("Please input your guess.");
 
