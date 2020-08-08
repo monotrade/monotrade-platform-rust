@@ -1,2 +1,6 @@
-pub mod gateway_actor;
-pub mod strategy_actor;
+//! Helper actors
+
+pub mod mocker;
+
+#[cfg(feature = "resolver")]
+pub mod resolver;

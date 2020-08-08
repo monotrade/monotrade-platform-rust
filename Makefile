@@ -9,7 +9,7 @@ build:
 
 test: build
 	cargo test $(CARGO_FLAGS)
-	cd examples/console_demo && cargo build
+	cd examples/chat && cargo build
 
 skeptic:
 	USE_SKEPTIC=1 cargo test $(CARGO_FLAGS)

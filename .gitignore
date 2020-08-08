@@ -1,2 +1,12 @@
 **/target
 **/node_modules
+**/Cargo.lock
+/gh-pages
+__pycache__
+
+*.so
+*.out
+*.pyc
+*.pid
+*.sock
+*~
