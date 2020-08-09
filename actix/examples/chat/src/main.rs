@@ -2,7 +2,7 @@
 use std::net;
 use std::str::FromStr;
 
-use monotrade::prelude::*;
+use actix::prelude::*;
 use futures_util::stream::StreamExt;
 use tokio::net::{TcpListener, TcpStream};
 use tokio_util::codec::FramedRead;
@@ -44,7 +44,7 @@ impl Handler<TcpConnect> for Server {
         ChatSession::create(move |ctx| {
             let (r, w) = tokio::io::split(msg.0);
             ChatSession::add_stream(FramedRead::new(r, ChatCodec), ctx);
-            ChatSession::new(server, monotrade::io::FramedWrite::new(w, ChatCodec, ctx))
+            ChatSession::new(server, actix::io::FramedWrite::new(w, ChatCodec, ctx))
         });
     }
 }

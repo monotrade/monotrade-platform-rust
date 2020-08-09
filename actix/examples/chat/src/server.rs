@@ -2,7 +2,7 @@
 //! And manages available rooms. Peers send messages to other peers in same
 //! room through `ChatServer`.
 
-use monotrade::prelude::*;
+use actix::prelude::*;
 use rand::{self, Rng};
 use std::collections::{HashMap, HashSet};
 
@@ -39,7 +39,7 @@ pub struct Message {
 /// List of available rooms
 pub struct ListRooms;
 
-impl monotrade::Message for ListRooms {
+impl actix::Message for ListRooms {
     type Result = Vec<String>;
 }
 

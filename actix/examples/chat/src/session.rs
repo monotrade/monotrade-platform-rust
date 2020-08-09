@@ -2,8 +2,8 @@
 //! proxies commands from peer to `ChatServer`.
 use std::io;
 
-use monotrade::clock::{Duration, Instant};
-use monotrade::prelude::*;
+use actix::clock::{Duration, Instant};
+use actix::prelude::*;
 
 use tokio::io::WriteHalf;
 use tokio::net::TcpStream;
@@ -28,11 +28,11 @@ pub struct ChatSession {
     /// joined room
     room: String,
     /// Framed wrapper
-    framed: monotrade::io::FramedWrite<ChatResponse, WriteHalf<TcpStream>, ChatCodec>,
+    framed: actix::io::FramedWrite<ChatResponse, WriteHalf<TcpStream>, ChatCodec>,
 }
 
 impl Actor for ChatSession {
-    type Context = monotrade::Context<Self>;
+    type Context = actix::Context<Self>;
 
     fn started(&mut self, ctx: &mut Self::Context) {
         // we'll start heartbeat process on session start.
@@ -60,7 +60,7 @@ impl Actor for ChatSession {
     }
 }
 
-impl monotrade::io::WriteHandler<io::Error> for ChatSession {}
+impl actix::io::WriteHandler<io::Error> for ChatSession {}
 
 /// To use `Framed` with an actor, we have to implement `StreamHandler` trait
 impl StreamHandler<Result<ChatRequest, io::Error>> for ChatSession {
@@ -124,7 +124,7 @@ impl Handler<Message> for ChatSession {
 impl ChatSession {
     pub fn new(
         addr: Addr<ChatServer>,
-        framed: monotrade::io::FramedWrite<ChatResponse, WriteHalf<TcpStream>, ChatCodec>,
+        framed: actix::io::FramedWrite<ChatResponse, WriteHalf<TcpStream>, ChatCodec>,
     ) -> ChatSession {
         ChatSession {
             addr,
@@ -138,7 +138,7 @@ impl ChatSession {
     /// helper method that sends ping to client every second.
     ///
     /// also this method check heartbeats from client
-    fn hb(&self, ctx: &mut monotrade::Context<Self>) {
+    fn hb(&self, ctx: &mut actix::Context<Self>) {
         ctx.run_later(Duration::new(1, 0), |act, ctx| {
             // check client heartbeats
             if Instant::now().duration_since(act.hb) > Duration::new(10, 0) {

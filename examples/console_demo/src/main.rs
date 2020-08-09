@@ -1,7 +1,5 @@
 use std::io;
 
-# use monotrade_platform::prelude::*;
-use monotrade::platform::*;
 
 fn main() {
     let platform = Platform::new();

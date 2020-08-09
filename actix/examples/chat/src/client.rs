@@ -4,7 +4,7 @@ use std::{io, net, thread};
 
 use futures_util::future::FutureExt;
 
-use monotrade::prelude::*;
+use actix::prelude::*;
 use tokio::io::WriteHalf;
 use tokio::net::TcpStream;
 use tokio_util::codec::FramedRead;
@@ -23,7 +23,7 @@ async fn main() {
             let (r, w) = tokio::io::split(stream);
             ctx.add_stream(FramedRead::new(r, codec::ClientChatCodec));
             ChatClient {
-                framed: monotrade::io::FramedWrite::new(w, codec::ClientChatCodec, ctx),
+                framed: actix::io::FramedWrite::new(w, codec::ClientChatCodec, ctx),
             }
         });
 
@@ -47,7 +47,7 @@ async fn main() {
 }
 
 struct ChatClient {
-    framed: monotrade::io::FramedWrite<
+    framed: actix::io::FramedWrite<
         codec::ChatRequest,
         WriteHalf<TcpStream>,
         codec::ClientChatCodec,
@@ -85,7 +85,7 @@ impl ChatClient {
     }
 }
 
-impl monotrade::io::WriteHandler<io::Error> for ChatClient {}
+impl actix::io::WriteHandler<io::Error> for ChatClient {}
 
 /// Handle stdin commands
 impl Handler<ClientCommand> for ChatClient {
