@@ -530,6 +530,8 @@ name = "monotrade-platform"
 version = "0.1.0"
 dependencies = [
  "actix",
+ "actix-rt",
+ "actix_derive",
  "monotrade-api",
 ]
 
