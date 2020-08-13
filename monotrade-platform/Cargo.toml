@@ -1,11 +1,21 @@
 [package]
-name = "console_demo"
+name = "monotrade-platform"
 version = "0.1.0"
 authors = ["Holbrook <wanghaikuo@tsinghua.org.cn>"]
-workspace = "../../"
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[lib]
+name = "monotrade"
+path = "src/lib.rs"
+crate-type = ["dylib"]
+
+
+
 [dependencies]
-monotrade-platform = { path = "../../monotrade-platform" }
+monotrade-api = { path = "../monotrade-api/" }
+actix = "0.10.0-alpha.3"
+
+actix_derive = "0.5"
+actix-rt = "1.0"

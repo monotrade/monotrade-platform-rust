@@ -10,7 +10,9 @@ edition = "2018"
 # 指定编译生成的类型是 dylib（动态链接库），
 # 名字在 *inux 下是 libffi，Windows 下是 ffi。
 name = "ffi"
+path = "src/lib.rs"
 crate-type = ["dylib"]
 
 
 [dependencies]
+monotrade-platform = { path = "../../" }
