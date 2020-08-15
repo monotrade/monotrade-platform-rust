@@ -2,10 +2,10 @@
 name = "console_demo"
 version = "0.1.0"
 authors = ["Holbrook <wanghaikuo@tsinghua.org.cn>"]
-workspace = "../../"
+workspace = "../"
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-monotrade-platform = { path = "../../monotrade-platform" }
+monotrade-platform = { path = "../monotrade-platform" }

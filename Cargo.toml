@@ -2,6 +2,6 @@
 members = [
     "monotrade-api",
     "monotrade-platform",
-    "examples/console_demo",
+    "console_demo",
     "monotrade-neon/native",
 ]
